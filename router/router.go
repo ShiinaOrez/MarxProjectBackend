@@ -3,9 +3,9 @@ package router
 import (
 	"net/http"
 
-	"github.com/muxih4ck/Go-Web-Application-Template/handler/sd"
-	"github.com/muxih4ck/Go-Web-Application-Template/handler/user"
-	"github.com/muxih4ck/Go-Web-Application-Template/router/middleware"
+	"github.com/ShiinaOrez/MarxProjectBackend/handler/sd"
+	"github.com/ShiinaOrez/MarxProjectBackend/handler/user"
+	"github.com/ShiinaOrez/MarxProjectBackend/router/middleware"
 
 	"github.com/gin-gonic/gin"
 )

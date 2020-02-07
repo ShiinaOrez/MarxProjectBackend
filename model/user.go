@@ -2,8 +2,8 @@ package model
 
 import (
 	"fmt"
-	"github.com/muxih4ck/Go-Web-Application-Template/pkg/auth"
-	"github.com/muxih4ck/Go-Web-Application-Template/pkg/constvar"
+	"github.com/ShiinaOrez/MarxProjectBackend/pkg/auth"
+	"github.com/ShiinaOrez/MarxProjectBackend/pkg/constvar"
 
 	validator "gopkg.in/go-playground/validator.v9"
 )

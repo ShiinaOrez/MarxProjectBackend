@@ -1,11 +1,11 @@
 package user
 
 import (
-	. "github.com/muxih4ck/Go-Web-Application-Template/handler"
-	"github.com/muxih4ck/Go-Web-Application-Template/model"
-	"github.com/muxih4ck/Go-Web-Application-Template/pkg/auth"
-	"github.com/muxih4ck/Go-Web-Application-Template/pkg/errno"
-	"github.com/muxih4ck/Go-Web-Application-Template/pkg/token"
+	. "github.com/ShiinaOrez/MarxProjectBackend/handler"
+	"github.com/ShiinaOrez/MarxProjectBackend/model"
+	"github.com/ShiinaOrez/MarxProjectBackend/pkg/auth"
+	"github.com/ShiinaOrez/MarxProjectBackend/pkg/errno"
+	"github.com/ShiinaOrez/MarxProjectBackend/pkg/token"
 
 	"github.com/gin-gonic/gin"
 )

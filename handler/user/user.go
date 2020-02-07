@@ -1,7 +1,7 @@
 package user
 
 import (
-	"github.com/muxih4ck/Go-Web-Application-Template/model"
+	"github.com/ShiinaOrez/MarxProjectBackend/model"
 )
 
 type CreateRequest struct {

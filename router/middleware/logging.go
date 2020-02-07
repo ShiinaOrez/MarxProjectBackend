@@ -9,9 +9,9 @@ import (
 	"regexp"
 	"time"
 
-	"github.com/muxih4ck/Go-Web-Application-Template/handler"
-	"github.com/muxih4ck/Go-Web-Application-Template/log"
-	"github.com/muxih4ck/Go-Web-Application-Template/pkg/errno"
+	"github.com/ShiinaOrez/MarxProjectBackend/handler"
+	"github.com/ShiinaOrez/MarxProjectBackend/log"
+	"github.com/ShiinaOrez/MarxProjectBackend/pkg/errno"
 
 	"github.com/gin-gonic/gin"
 	"github.com/willf/pad"

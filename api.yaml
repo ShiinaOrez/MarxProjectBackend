@@ -1,0 +1,224 @@
+swagger: "2.0"
+info:
+  description: "This is the CCNU Marx Project API swagger document."
+  version: "2.0.0"
+  title: "Marx Project Backend"
+  termsOfService: "http://xxx.ccnu.edu.cn/"
+  contact:
+    email: "Shiinaorez@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "xxx.ccnu.edu.cn"
+basePath: "/api"
+tags:
+  - name: "history"
+    description: "中国科技史新闻"
+  - name: "study/news"
+    description: "学会新闻"
+  - name: "study/cpc"
+    description: "学会党建"
+  - name: "info"
+    description: "学会信息"
+schemes:
+  - "https"
+  - "http"
+paths:
+  /history/news:
+    get:
+      tags:
+        - "history"
+      summary: "获取中国科技史新闻.(默认第一页)"
+      description: "分页获取多个中国科技史新闻"
+      operationId: "history-news"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "query"
+          name: "page"
+          required: false
+          type: integer
+      responses:
+        200:
+          description: "OK"
+          schema:
+            required:
+              - news
+              - page_count
+            properties:
+              news:
+                type: array
+                items:
+                  $ref: "#/definitions/New"
+              page_count:
+                type: integer
+  /history/new/{id}:
+    get:
+      tags:
+        - "history"
+      summary: "获取中国科技史新闻.(单个)"
+      description: "获取单个新闻的内容"
+      operationId: "history-new-get"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "path"
+          name: "id"
+          required: true
+          type: integer
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/New"
+
+  /study/news:
+    get:
+      tags:
+        - "study/news"
+      summary: "获取学会新闻.(默认第一页)"
+      description: "分页获取多个学会新闻"
+      operationId: "study-news"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "query"
+          name: "page"
+          required: false
+          type: integer
+      responses:
+        200:
+          description: "OK"
+          schema:
+            required:
+              - news
+              - page_count
+            properties:
+              news:
+                type: array
+                items:
+                  $ref: "#/definitions/New"
+              page_count:
+                type: integer
+  /study/new/{id}:
+    get:
+      tags:
+        - "study/news"
+      summary: "获取学会新闻.(单个)"
+      description: "获取单个新闻的内容"
+      operationId: "study-new-get"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "path"
+          name: "id"
+          required: true
+          type: integer
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/New"
+
+  /study/cpc/articles:
+    get:
+      tags:
+        - "study/cpc"
+      summary: "获取学会党建文章.(默认第一页)"
+      description: "分页获取多个学会党建文章"
+      operationId: "study-cpc"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "query"
+          name: "page"
+          required: false
+          type: integer
+      responses:
+        200:
+          description: "OK"
+          schema:
+            required:
+              - articles
+              - page_count
+            properties:
+              news:
+                type: array
+                items:
+                  $ref: "#/definitions/Article"
+              page_count:
+                type: integer
+  /study/cpc/article/{id}:
+    get:
+      tags:
+        - "study/cpc"
+      summary: "获取学会党建文章.(单个)"
+      description: "获取单个学会党建文章内容"
+      operationId: "study-cpc-get"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "query"
+          name: "page"
+          required: true
+          type: integer
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/Article"  
+definitions:
+  New:
+    type: "object"
+    required:
+      - "id"
+      - "title"
+      - "author"
+      - "content"
+      - "images"
+    properties:
+      id:
+        type: "integer"
+      title:
+        type: "string"
+      author:
+        type: "string"
+      content:
+        type: "string"
+      images:
+        type: array
+        items:
+          type: string
+  Article:
+    type: "object"
+    required:
+      - "id"
+      - "title"
+      - "author"
+      - "content"
+      - "images"
+    properties:
+      id:
+        type: "integer"
+      title:
+        type: "string"
+      author:
+        type: "string"
+      content:
+        type: "string"
+      images:
+        type: array
+        items:
+          type: string

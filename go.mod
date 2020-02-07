@@ -1,4 +1,4 @@
-module github.com/muxih4ck/Go-Web-Application-Template
+module github.com/ShiinaOrez/MarxProjectBackend
 
 go 1.12
 

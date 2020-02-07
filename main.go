@@ -6,11 +6,11 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/muxih4ck/Go-Web-Application-Template/config"
-	"github.com/muxih4ck/Go-Web-Application-Template/log"
-	"github.com/muxih4ck/Go-Web-Application-Template/model"
-	"github.com/muxih4ck/Go-Web-Application-Template/router"
-	"github.com/muxih4ck/Go-Web-Application-Template/router/middleware"
+	"github.com/ShiinaOrez/MarxProjectBackend/config"
+	"github.com/ShiinaOrez/MarxProjectBackend/log"
+	"github.com/ShiinaOrez/MarxProjectBackend/model"
+	"github.com/ShiinaOrez/MarxProjectBackend/router"
+	"github.com/ShiinaOrez/MarxProjectBackend/router/middleware"
 
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/pflag"
