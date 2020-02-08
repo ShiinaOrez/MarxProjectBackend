@@ -10,9 +10,7 @@ var (
 	ErrDatabase   = &Errno{Code: 20002, Message: "Database error."}
 	ErrToken      = &Errno{Code: 20003, Message: "Error occurred while signing the JSON web token."}
 
-	// user errors
-	ErrEncrypt           = &Errno{Code: 20101, Message: "Error occurred while encrypting the user password."}
-	ErrUserNotFound      = &Errno{Code: 20102, Message: "The user was not found."}
-	ErrTokenInvalid      = &Errno{Code: 20103, Message: "The token was invalid."}
-	ErrPasswordIncorrect = &Errno{Code: 20104, Message: "The password was incorrect."}
+	ErrPageInvalid = &Errno{Code: 30001, Message: "非法的页码."}
+	ErrIdInvalid   = &Errno{Code: 30002, Message: "非法的ID."}
+	ErrNewNotFound = &Errno{Code: 30003, Message: "丢失的新闻."}
 )

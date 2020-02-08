@@ -3,8 +3,9 @@ package router
 import (
 	"net/http"
 
+	h "github.com/ShiinaOrez/MarxProjectBackend/handler/history"
 	"github.com/ShiinaOrez/MarxProjectBackend/handler/sd"
-	"github.com/ShiinaOrez/MarxProjectBackend/handler/user"
+	s "github.com/ShiinaOrez/MarxProjectBackend/handler/study"
 	"github.com/ShiinaOrez/MarxProjectBackend/router/middleware"
 
 	"github.com/gin-gonic/gin"
@@ -14,27 +15,24 @@ import (
 func Load(g *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	// Middlewares.
 	g.Use(gin.Recovery())
-	g.Use(middleware.NoCache)
-	g.Use(middleware.Options)
-	g.Use(middleware.Secure)
 	g.Use(mw...)
 	// 404 Handler.
 	g.NoRoute(func(c *gin.Context) {
 		c.String(http.StatusNotFound, "The incorrect API route.")
 	})
 
-	// api for authentication functionalities
-	g.POST("/login", user.Login)
-
-	// The user handlers, requiring authentication
-	u := g.Group("/v1/user")
-	u.Use(middleware.AuthMiddleware())
+	// The history handlers, requiring authentication
+	history := g.Group("/api/history")
 	{
-		u.POST("", user.Create)
-		u.DELETE("/:id", user.Delete)
-		u.PUT("/:id", user.Update)
-		u.GET("", user.List)
-		u.GET("/:username", user.Get)
+		history.GET("/news", middleware.Page, h.HistoryNews)
+		history.GET("/new/:id", middleware.Id, h.HistoryNew)
+	}
+
+	// The study handlers, requiring authentication
+	study := g.Group("/api/study")
+	{
+		study.GET("/news", middleware.Page, s.StudyNews)
+		study.GET("/new/:id", middleware.Id, s.StudyNew)
 	}
 
 	// The health check handlers

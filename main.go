@@ -10,7 +10,6 @@ import (
 	"github.com/ShiinaOrez/MarxProjectBackend/log"
 	"github.com/ShiinaOrez/MarxProjectBackend/model"
 	"github.com/ShiinaOrez/MarxProjectBackend/router"
-	"github.com/ShiinaOrez/MarxProjectBackend/router/middleware"
 
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/pflag"
@@ -48,10 +47,6 @@ func main() {
 	router.Load(
 		// Cores.
 		g,
-
-		// MiddleWares.
-		middleware.Logging(),
-		middleware.RequestId(),
 	)
 
 	// Ping the server to make sure the router is working.
