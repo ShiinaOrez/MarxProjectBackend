@@ -30,8 +30,20 @@ func (u *ArticlesModel) Update() error {
 }
 
 // GetArticles gets an Articles by the Articles identifier.
-func GetArticlesById(id uint64) (*ArticlesModel, error) {
+func GetArticleById(id int) (*ArticlesModel, error) {
 	u := &ArticlesModel{}
 	d := DB.Self.Where("id = ?", id).First(&u)
 	return u, d.Error
+}
+
+func GetArticles(page, limit int) ([]ArticlesModel, uint64, error) {
+	articles := make([]ArticlesModel, 0)
+	var count uint64
+	if err := DB.Self.Model(&ArticlesModel{}).Count(&count).Error; err != nil {
+		return articles, count, err
+	}
+	if err := DB.Self.Offset((page - 1) * limit).Limit(limit).Find(&articles).Error; err != nil {
+		return articles, count, err
+	}
+	return articles, count, nil
 }

@@ -3,6 +3,7 @@ package router
 import (
 	"net/http"
 
+	sc "github.com/ShiinaOrez/MarxProjectBackend/handler/cpc"
 	h "github.com/ShiinaOrez/MarxProjectBackend/handler/history"
 	"github.com/ShiinaOrez/MarxProjectBackend/handler/sd"
 	s "github.com/ShiinaOrez/MarxProjectBackend/handler/study"
@@ -21,18 +22,25 @@ func Load(g *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 		c.String(http.StatusNotFound, "The incorrect API route.")
 	})
 
-	// The history handlers, requiring authentication
+	// The history handlers
 	history := g.Group("/api/history")
 	{
 		history.GET("/news", middleware.Page, h.HistoryNews)
 		history.GET("/new/:id", middleware.Id, h.HistoryNew)
 	}
 
-	// The study handlers, requiring authentication
+	// The study handlers
 	study := g.Group("/api/study")
 	{
 		study.GET("/news", middleware.Page, s.StudyNews)
 		study.GET("/new/:id", middleware.Id, s.StudyNew)
+	}
+
+	// The cpc studying handlers
+	cpc := g.Group("/api/study/cpc")
+	{
+		cpc.GET("/articles", middleware.Page, sc.StudyCpcArticles)
+		cpc.GET("/article/:id", middleware.Id, sc.StudyCpcArticle)
 	}
 
 	// The health check handlers
