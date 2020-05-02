@@ -170,6 +170,10 @@ paths:
       produces:
         - "application/json"
       parameters:
+        - in: "path"
+          name: id
+          required: true
+          type: integer
         - in: "query"
           name: "page"
           required: true
@@ -178,7 +182,23 @@ paths:
         200:
           description: "OK"
           schema:
-            $ref: "#/definitions/Article"  
+            $ref: "#/definitions/Article"
+  /info:
+    get:
+      tags:
+        - "info"
+      summary: "获取学会基本信息"
+      description: "获取学会基本信息，以字符串形式返回"
+      operationId: "info-get"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/Info"
 definitions:
   New:
     type: "object"
@@ -222,3 +242,10 @@ definitions:
         type: array
         items:
           type: string
+  Info:
+    type: "object"
+    required:
+      - "information"
+    properties:
+      information:
+        type: "string"
